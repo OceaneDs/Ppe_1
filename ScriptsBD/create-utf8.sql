@@ -1,6 +1,7 @@
 
 GRANT ALL ON festival . * TO 'festival'@'localhost' IDENTIFIED BY 'secret';
 
+
 DROP TABLE IF EXISTS `Attribution`;
 DROP TABLE IF EXISTS `Groupe`;
 DROP TABLE IF EXISTS `Etablissement`;
