@@ -1,4 +1,4 @@
-<?
+<?php
 
 // FONCTIONS DE CONTRÔLE DE SAISIE
 

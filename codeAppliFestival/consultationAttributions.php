@@ -1,4 +1,4 @@
-<?
+<?php
 
 include("_debut.inc.php");
 include("_gestionBase.inc.php"); 
@@ -10,12 +10,6 @@ $connexion=connect();
 if (!$connexion)
 {
    ajouterErreur("Echec de la connexion au serveur MySql");
-   afficherErreurs();
-   exit();
-}
-if (!selectBase($connexion))
-{
-   ajouterErreur("La base de données festival est inexistante ou non accessible");
    afficherErreurs();
    exit();
 }
@@ -35,9 +29,11 @@ if ($nbEtab!=0)
    
    // POUR CHAQUE ÉTABLISSEMENT : AFFICHAGE D'UN TABLEAU COMPORTANT 2 LIGNES 
    // D'EN-TÊTE ET LE DÉTAIL DES ATTRIBUTIONS
-   $req=obtenirReqEtablissementsAyantChambresAttribuées();
-   $rsEtab=mysql_query($req, $connexion);
-   $lgEtab=mysql_fetch_array($rsEtab);
+	$req=$connexion->prepare(obtenirReqEtablissementsAyantChambresAttribuées());
+	
+	$req->execute();
+	$lgEtab=$req->fetch();
+	
    // BOUCLE SUR LES ÉTABLISSEMENTS AYANT DÉJÀ DES CHAMBRES ATTRIBUÉES
    while($lgEtab!=FALSE)
    {
