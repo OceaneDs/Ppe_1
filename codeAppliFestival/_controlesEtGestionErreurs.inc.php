@@ -14,14 +14,14 @@ function estUnCp($codePostal)
 // la fonction retourne vrai
 function estEntier($valeur)
 {
-   return !ereg("[^0-9]", $valeur);
+	return !preg_match("[^0-9]", $valeur);
 }
 
 // Si la valeur transmise ne contient pas d'autres caractères que des chiffres  
 // et des lettres non accentuées, la fonction retourne vrai
 function estChiffresOuEtLettres($valeur)
 {
-   return !ereg("[^a-zA-Z0-9]", $valeur);
+   return !preg_match("[^a-zA-Z0-9]", $valeur);
 }
 
 // Fonction qui vérifie la saisie lors de la modification d'un établissement. 

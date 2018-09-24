@@ -32,8 +32,8 @@ class='tabNonQuadrille'>
    </tr>";
      
    $req=obtenirReqEtablissements();
-   $rsEtab=mysql_query($req, $connexion);
-   $lgEtab=mysql_fetch_array($rsEtab);
+   $rsEtab=$connexion->query($req);
+   $lgEtab=$rsEtab->fetch(PDO::FETCH_ASSOC);
    // BOUCLE SUR LES ÉTABLISSEMENTS
    while ($lgEtab!=FALSE)
    {
@@ -67,7 +67,7 @@ class='tabNonQuadrille'>
 			}
 			echo "
       </tr>";
-      $lgEtab=mysql_fetch_array($rsEtab);
+      $lgEtab=$rsEtab->fetch(PDO::FETCH_ASSOC);
    }   
    echo "
    <tr class='ligneTabNonQuad'>

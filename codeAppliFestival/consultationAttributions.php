@@ -13,6 +13,12 @@ if (!$connexion)
    afficherErreurs();
    exit();
 }
+if (!selectBase($connexion))
+{
+   ajouterErreur("La base de données festival est inexistante ou non accessible");
+   afficherErreurs();
+   exit();
+}
 
 // CONSULTER LES ATTRIBUTIONS DE TOUS LES ÉTABLISSEMENTS
 
@@ -66,8 +72,8 @@ if ($nbEtab!=0)
       // AFFICHAGE DU DÉTAIL DES ATTRIBUTIONS : UNE LIGNE PAR GROUPE AFFECTÉ 
       // DANS L'ÉTABLISSEMENT       
       $req=obtenirReqGroupesEtab($idEtab);
-      $rsGroupe=mysql_query($req, $connexion);
-      $lgGroupe=mysql_fetch_array($rsGroupe);
+      $rsGroupe=$connexion->query($req);
+      $lgGroupe=$rsGroupe->fetch(PDO::FETCH_ASSOC);
                
       // BOUCLE SUR LES GROUPES (CHAQUE GROUPE EST AFFICHÉ EN LIGNE)
       while($lgGroupe!=FALSE)
@@ -83,12 +89,12 @@ if ($nbEtab!=0)
          echo "
             <td width='35%' align='left'>$nbOccupGroupe</td>
          </tr>";
-         $lgGroupe=mysql_fetch_array($rsGroupe);
+         $lgGroupe=$rsGroupe->fetch(PDO::FETCH_ASSOC);;
       } // Fin de la boucle sur les groupes
       
       echo "
       </table><br>";
-      $lgEtab=mysql_fetch_array($rsEtab);
+      $lgEtab=$rsEtab->fetch(PDO::FETCH_ASSOC);;
    } // Fin de la boucle sur les établissements
 }
 
