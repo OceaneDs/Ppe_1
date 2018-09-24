@@ -46,6 +46,7 @@ if ($action=='demanderModifEtab')
    $nomResponsable=$lgEtab['nomResponsable'];
    $prenomResponsable=$lgEtab['prenomResponsable'];
    $nombreChambresOffertes=$lgEtab['nombreChambresOffertes'];
+   $informationsPratiques=$lgEtab['informationsPratiques'];
 }
 else
 {
@@ -60,6 +61,7 @@ else
    $nomResponsable=$_REQUEST['nomResponsable'];
    $prenomResponsable=$_REQUEST['prenomResponsable'];
    $nombreChambresOffertes=$_REQUEST['nombreChambresOffertes'];
+   $informationsPratiques=$_REQUEST['informationsPratiques'];
 
    verifierDonneesEtabM($connexion, $id, $nom, $adresseRue, $codePostal, $ville,  
                         $tel, $nomResponsable, $nombreChambresOffertes);      
@@ -67,7 +69,8 @@ else
    {        
       modifierEtablissement($connexion, $id, $nom, $adresseRue, $codePostal, $ville, 
                             $tel, $adresseElectronique, $type, $civiliteResponsable, 
-                            $nomResponsable, $prenomResponsable, $nombreChambresOffertes);
+                            $nomResponsable, $prenomResponsable, $nombreChambresOffertes,
+							$informationsPratiques);
    }
 }
 
@@ -163,6 +166,11 @@ echo "
             <td> Nombre chambres offertes*: </td>
             <td><input type="text" value="'.$nombreChambresOffertes.'" name=
             "nombreChambresOffertes" size ="2" maxlength="3"></td>
+         </tr>
+		 <tr class="ligneTabNonQuad">
+            <td> Informations pratiques: </td>
+            <td><input type="text" value="'.$informationsPratiques.'" name=
+            "informationsPratiques" size ="100" maxlength="500"></td>
          </tr>
    </table>';
    

@@ -1,6 +1,8 @@
+DROP DATABASE festival;
+CREATE DATABASE festival;
+USE festival;
 
 GRANT ALL ON festival . * TO 'festival'@'localhost' IDENTIFIED BY 'secret';
-
 
 DROP TABLE IF EXISTS `Attribution`;
 DROP TABLE IF EXISTS `Groupe`;
@@ -19,6 +21,7 @@ civiliteResponsable varchar(12) not null,
 nomResponsable varchar(25) not null,
 prenomResponsable varchar(25),
 nombreChambresOffertes integer,
+informationsPratiques blob(500),
 constraint pk_Etablissement primary key(id))
 ENGINE=INNODB;
 

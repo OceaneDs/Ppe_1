@@ -44,6 +44,7 @@ if ($action=='demanderCreEtab')
    $nomResponsable='';
    $prenomResponsable='';
    $nombreChambresOffertes='';
+   $informationsPratiques='';
 }
 else
 {
@@ -59,14 +60,15 @@ else
    $nomResponsable=$_REQUEST['nomResponsable'];
    $prenomResponsable=$_REQUEST['prenomResponsable'];
    $nombreChambresOffertes=$_REQUEST['nombreChambresOffertes'];
+   $informationsPratiques=$_REQUEST['informationsPratiques'];
 
    verifierDonneesEtabC($connexion, $id, $nom, $adresseRue, $codePostal, $ville, 
-                        $tel, $nomResponsable, $nombreChambresOffertes);      
+                        $tel, $nomResponsable, $nombreChambresOffertes, $informationsPratiques);      
    if (nbErreurs()==0)
    {        
       creerEtablissement($connexion, $id, $nom, $adresseRue, $codePostal, $ville,  
                          $tel, $adresseElectronique, $type, $civiliteResponsable, 
-                         $nomResponsable, $prenomResponsable, $nombreChambresOffertes);
+                         $nomResponsable, $prenomResponsable, $nombreChambresOffertes, $informationsPratiques);
    }
 }
 
@@ -164,6 +166,11 @@ echo "
             <td> Nombre chambres offertes*: </td>
             <td><input type="text" value="'.$nombreChambresOffertes.'" name=
             "nombreChambresOffertes" size ="2" maxlength="3"></td>
+         </tr>
+		  <tr class="ligneTabNonQuad">
+            <td> Informations pratiques: </td>
+            <td><input type="text" value="'.$informationsPratiques.'" name=
+			"informationsPratiques" size ="100" maxlength="500"></td>
          </tr>
    </table>';
    
